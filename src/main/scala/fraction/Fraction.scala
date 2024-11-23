@@ -13,7 +13,7 @@ package fraction:
 
     @targetName("multiply") def *(other: Fraction) = Fraction(num * other.num, den * other.den)
     @targetName("divide") def /(other: Fraction) = Fraction(num * other.den, den * other.num)
-    @targetName("add") def +(other: Fraction) =
+    @targetName("add") def +(other: Fraction): Fraction =
       val lcd = lcm(den, other.den)
       val newNum = num * (lcd / den)
       val newOtherNum = other.num * (lcd / other.den)
