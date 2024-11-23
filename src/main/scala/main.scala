@@ -11,7 +11,7 @@ def testFractions(): Unit =
 
   val quotient = Fraction(2, 5) / Fraction(3, 10)
   println(s"The answer is $quotient.")
-  
-  val sum = Fraction(1, 2) + Fraction(1, 4)
+
+  val sum = Fraction(2, 21) + Fraction(1, 6)
   println(s"The answer is $sum.")
 
