@@ -3,7 +3,7 @@ package money:
   import scala.annotation.targetName
   
   class Money(var dollars: Int = 0, var cents: Int = 0):
-    // override def toString: String = s"$dollars.$cents"
+    override def toString: String = s"$dollars.$cents"
     @targetName("add") def+(other: Money): Money =
       val totalCents = cents + other.cents
       val totalDollars = dollars + other.dollars
