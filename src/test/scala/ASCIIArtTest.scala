@@ -25,7 +25,7 @@ class ASCIIArtTest extends AnyFunSuite:
   }
 
   test("ASCIIArt addition") {
-    val coolArt = cat + helloScalaCoder
+    val coolArt = ASCIIArt(cat) + ASCIIArt(helloScalaCoder)
     val answer: String =
       """
       /\_/\      -----
@@ -33,5 +33,5 @@ class ASCIIArtTest extends AnyFunSuite:
      (  -  )  <  Scala  |
       | | |    \ Coder  /
      (__|__)     -----"""
-
+    assert(coolArt.toString() == answer)
   }
