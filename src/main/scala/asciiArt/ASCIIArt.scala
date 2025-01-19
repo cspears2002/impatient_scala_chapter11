@@ -1,15 +1,20 @@
 package asciiArt
 
+import scala.annotation.targetName
 import scala.collection.mutable.ArrayBuffer
 
-class ASCIIArt(art: String):
+class ASCIIArt(val rows: List[String] = Nil):
 
-  // Need to read the ascii art into this buffer
-  private val myArtArray = art.split("\n")
+  @targetName("add")
+  def +(row: String): ASCIIArt = new ASCIIArt(rows :+ row)
 
-  override def toString: String = {
-    myArtArray.mkString("\n")
+  def |(other: ASCIIArt): ASCIIArt = {
+    ASCIIArt(List("Hello World"))
   }
-  
+
+  override def toString: String = rows.mkString("\n")
+
+
+
 
 

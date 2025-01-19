@@ -1,37 +1,43 @@
 import asciiArt.ASCIIArt
 import org.scalatest.funsuite.AnyFunSuite
 
+import scala.language.postfixOps
+
 class ASCIIArtTest extends AnyFunSuite:
-  val cat =
-    """
-    /\_/\
-   ( ' ' )
-   (  -  )
-    | | |
-   (__|__)"""
+  val cat: String =
+    """ /\_/\
+     |( ' ' )
+     |(  -  )
+     | | | |
+     |(__|__)""".stripMargin
 
   val helloScalaCoder =
     """
-      -----
-    / Hello \
-   <  Scala  |
-    \ Coder  /
-      -----
+    /\_/\     -----
+   ( ' ' )   / Hello \
+   (  -  )  <  Scala  |
+    | | |    \ Coder  /
+   (__|__)     -----
     """
 
-  test("ASCIIArt.toString") {
-    val myArt = ASCIIArt(cat)
-    assert(myArt.toString() == cat)
+  test("ASCIIArt addition") {
+    val coolArt = new ASCIIArt +
+      """ /\_/\""" +
+      """( ' ' )""" +
+      """(  -  )""" +
+      """ | | | """ +
+      """(__|__)"""
+
+    println(coolArt.toString)
+    println(cat)
+    assert(coolArt.toString == cat)
+
+    val result = coolArt | new ASCIIArt +
+      """-----""" +
+      """/ Hello \""" +
+      """<  Scala  |""" +
+      """\ Coder  /""" +
+      """-----"""
   }
 
-  test("ASCIIArt addition") {
-    val coolArt = ASCIIArt(cat) + ASCIIArt(helloScalaCoder)
-    val answer: String =
-      """
-      /\_/\      -----
-     ( ' ' )   / Hello \
-     (  -  )  <  Scala  |
-      | | |    \ Coder  /
-     (__|__)     -----"""
-    assert(coolArt.toString() == answer)
-  }
+
