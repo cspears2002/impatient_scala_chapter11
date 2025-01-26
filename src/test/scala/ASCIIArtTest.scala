@@ -25,7 +25,7 @@ class ASCIIArtTest extends AnyFunSuite:
       """ /\_/\""" +
       """( ' ' )""" +
       """(  -  )""" +
-      """ | | | """ +
+      """ | | |""" +
       """(__|__)"""
 
     println(coolArt.toString)
