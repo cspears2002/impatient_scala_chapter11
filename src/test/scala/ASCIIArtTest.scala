@@ -28,8 +28,6 @@ class ASCIIArtTest extends AnyFunSuite:
       """ | | |""" +
       """(__|__)"""
 
-    println(coolArt.toString)
-    println(cat)
     assert(coolArt.toString == cat)
 
     val result = coolArt | new ASCIIArt +
@@ -38,6 +36,10 @@ class ASCIIArtTest extends AnyFunSuite:
       """<  Scala  |""" +
       """\ Coder  /""" +
       """-----"""
+    println(result.toString)
+    assert {
+      result.toString == helloScalaCoder
+    }
   }
 
 
