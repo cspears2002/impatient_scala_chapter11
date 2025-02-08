@@ -23,3 +23,15 @@ class MatrixTest extends AnyFunSuite:
     assert(newMatrix(1, 0) == 6)
     assert(newMatrix(1, 1) == 8)
   }
+
+  test("Multiply another matrix") {
+    val arr3: Array[Int] = Array(2, 3)
+    val arr4: Array[Int] = Array(4, 5)
+    val matrixB = Matrix(arr3, arr4)
+    
+    val prodMatrix = myMatrix * matrixB
+    assert(prodMatrix(0, 0) == 10)
+    assert(prodMatrix(0, 1) == 13)
+    assert(prodMatrix(1, 0) == 22)
+    assert(prodMatrix(1, 1) == 29)
+  }
