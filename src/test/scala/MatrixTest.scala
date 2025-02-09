@@ -35,3 +35,15 @@ class MatrixTest extends AnyFunSuite:
     assert(prodMatrix(1, 0) == 22)
     assert(prodMatrix(1, 1) == 29)
   }
+
+  test("Add to another matrix") {
+    val arr5: Array[Int] = Array(1, 1)
+    val arr6: Array[Int] = Array(1, 1)
+    val matrixC = Matrix(arr5, arr6)
+    
+    val sumMatrix = myMatrix + matrixC
+    assert(sumMatrix(0, 0) == 2)
+    assert(sumMatrix(0, 1) == 3)
+    assert(sumMatrix(1, 0) == 4)
+    assert(sumMatrix(1, 1) == 5)
+  }

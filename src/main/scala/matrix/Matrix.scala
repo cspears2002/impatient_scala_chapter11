@@ -3,6 +3,7 @@ package matrix
 import scala.annotation.targetName
 
 class Matrix(arr1: Array[Int], arr2: Array[Int]):
+// A 2x2 matrix
 
   private val arr: Array[Array[Int]] = Array.ofDim[Int](2, 2)
   for (i <- 0 until 2) {
@@ -11,6 +12,7 @@ class Matrix(arr1: Array[Int], arr2: Array[Int]):
   }
 
   def apply(row: Int, col: Int): Int = arr (row)(col)
+
   @targetName("multiply") def *(other: Int): Matrix =
     val myArr1 = new Array[Int](2)
     val myArr2 = new Array[Int](2)
@@ -24,4 +26,11 @@ class Matrix(arr1: Array[Int], arr2: Array[Int]):
     val val2 = (arr(0)(0) * other(0, 1)) + (arr(0)(1) * other(1, 1))
     val val3 = (arr(1)(0) * other(0, 0)) + (arr(1)(1) * other(1, 0))
     val val4 = (arr(1)(0) * other(0, 1)) + (arr(1)(1) * other(1, 1))
+    Matrix(Array(val1, val2), Array(val3, val4))
+
+  @targetName("add") def +(other: Matrix): Matrix =
+    val val1 = arr(0)(0) + other(0, 0)
+    val val2 = arr(0)(1) + other(0, 1)
+    val val3 = arr(1)(0) + other(1, 0)
+    val val4 = arr(1)(1) + other(1, 1)
     Matrix(Array(val1, val2), Array(val3, val4))
