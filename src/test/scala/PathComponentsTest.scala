@@ -16,9 +16,8 @@ class PathComponentsTest extends AnyFunSuite:
   }
 
   test("Destructure PathComponents") {
-    val PathComponents(myDir: Path, myFile: Path) = myPath
-    assert(myDir == myPath.getParent)
-    println(myDir)
-    assert(myFile == myPath.getFileName)
-    println(myFile)
+    val PathComponents(root, myDir, myFile) = myPath
+    assert(root == "home")
+    assert(myDir == "cay")
+    assert(myFile == "readme.txt")
   }
