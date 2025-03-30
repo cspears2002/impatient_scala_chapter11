@@ -13,7 +13,7 @@ class NameWithTitleTest extends AnyFunSuite:
 
   test("Extract Name Components") {
     val NameWithTitle(title, firstName, van, der, lastName) = peter
-    assert(title == "Dr.")
+    assert(title == Title.DR)
     assert(firstName == "Peter")
     assert(van == "van")
     assert(der == "der")
