@@ -2,12 +2,16 @@ package dynamicProperties
 
 import scala.language.dynamics
 
-class DynamicProps(val props: java.util.Properties) extends Dynamic:
+class DynamicProps(val props: java.util.Properties, val propName: String = "", val prop: Option[String] = None) extends Dynamic:
   def updateDynamic(name: String)(value: String): AnyRef =
-    props.setProperty(name.replaceAll("_", ".'"), value)
-  def selectDynamic(name: String): String =
-    props.getProperty(name.replaceAll("_", "."))
+    props.setProperty(name, value)
+  def selectDynamic(name: String): DynamicProps =
+    val newName = if propName.isEmpty then name else propName + "." + name
+    val newProp = Option(props.getProperty(newName))
+    DynamicProps(props, newName, newProp)
   def applyDynamicNamed(name: String)(args: (String, String)*): Any =
     if name != "add" then throw IllegalArgumentException()
     for (k, v) <- args do
-      props.setProperty(k.replaceAll("_", "."), v)
+      props.setProperty(k, v)
+
+  override def toString: String = prop.getOrElse("n/a")
