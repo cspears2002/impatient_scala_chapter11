@@ -4,7 +4,8 @@ import scala.language.dynamics
 
 class DynamicProps(val props: java.util.Properties, val propName: String = "", val prop: Option[String] = None) extends Dynamic:
   def updateDynamic(name: String)(value: String): AnyRef =
-    props.setProperty(name, value)
+    val newName = if propName.isEmpty then name else propName + "." + name
+    props.setProperty(newName, value)
   def selectDynamic(name: String): DynamicProps =
     val newName = if propName.isEmpty then name else propName + "." + name
     val newProp = Option(props.getProperty(newName))

@@ -6,6 +6,8 @@ class DynamicPropsTest extends AnyFunSuite:
     val sysProps = DynamicProps(System.getProperties)
     sysProps.username = "Fred"
     assert(sysProps.username.toString() == "Fred")
+    sysProps.xxx.yyy = "bbb"
+    assert(sysProps.xxx.yyy.toString() == "bbb")
   }
   test("Assign java.home") {
     val sysProps = DynamicProps(System.getProperties)
